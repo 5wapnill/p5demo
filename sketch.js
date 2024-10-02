@@ -1,11 +1,29 @@
+var t = 0;
+var speed = 0.000001;
+var step = 0.005;
+var size = 32;
+
 function setup() {
-    createCanvas(600, 600); // Creates a 400x400 canvas
-    background(220);        // Sets the background color to light gray
-  }
-  
-  function draw() {
-    background(220);        // Clear the canvas each frame
-    fill(0, 102, 153);      // Set the circle color to dark blue
-    ellipse(mouseX, mouseY, 50, 50);  // Draw a circle that follows the mouse
-  }
-  
+	createCanvas(windowWidth, windowHeight);
+	strokeWeight(2);
+	noLoop();
+}
+
+function draw() {
+	background(30, 30, 32);
+	for (x = 0; x < width; x += size)
+		for (y = 0; y < height; y += size) {
+			var n = noise(x * step, y * step, t);
+	stroke(80, 80, 82);
+			if (n > 0.45 && n < 0.55)
+				stroke (114, 114, 116);
+			if (n > 0.48 && n < 0.52)
+				stroke (188, 26, 58);
+			if (n < 0.5) {
+				line(x, y, x + size, y + size);
+			} else {
+				line(x, y + size, x + size, y);
+			}
+			t += speed;
+		}
+}
