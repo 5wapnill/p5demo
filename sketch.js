@@ -1,5 +1,5 @@
 function setup() {
-    createCanvas(400, 400); // Creates a 400x400 canvas
+    createCanvas(600, 600); // Creates a 400x400 canvas
     background(220);        // Sets the background color to light gray
   }
   
